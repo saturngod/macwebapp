@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'Web App' target in the 'Web App' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+    #import "Util.h"
+#endif

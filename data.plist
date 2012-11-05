@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>App Name</key>
+	<string>Trello</string>
+	<key>URL</key>
+	<string>http://www.trello.com</string>
+	<key>Show Preference</key>
+	<true/>
+	<key>Show TitleBar At Start</key>
+	<true/>
+</dict>
+</plist>
