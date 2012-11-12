@@ -10,6 +10,8 @@ Web App Project is helping to create current website to run like App in Mac OSX.
 
 2. replace the **icon.icns** file
 
+3. change com.comquas.cloud9 to com.comquas.yourapp in **xcode project targets**
+
 
 ## PNG TO ICNS file
 

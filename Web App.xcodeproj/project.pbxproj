@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD54111F16515FE4005852D4 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = AD54111E16515FE4005852D4 /* Util.m */; };
 		AD814E3716480A9D005294CD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD814E3616480A9D005294CD /* Cocoa.framework */; };
 		AD814E4116480A9D005294CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD814E3F16480A9D005294CD /* InfoPlist.strings */; };
 		AD814E4316480A9D005294CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD814E4216480A9D005294CD /* main.m */; };
@@ -16,12 +17,13 @@
 		AD814E5416480B93005294CD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD814E5316480B93005294CD /* WebKit.framework */; };
 		AD814E5816480BC3005294CD /* preferenceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD814E5616480BC3005294CD /* preferenceWindowController.m */; };
 		AD814E5916480BC3005294CD /* preferenceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD814E5716480BC3005294CD /* preferenceWindowController.xib */; };
-		AD814E6016480BF2005294CD /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = AD814E5F16480BF2005294CD /* Util.m */; };
 		AD814E6816481804005294CD /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = AD814E6716481804005294CD /* icon.icns */; };
 		AD814E6A1648182B005294CD /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD814E691648182B005294CD /* data.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD54111D16515FE4005852D4 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		AD54111E16515FE4005852D4 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		AD814E3216480A9D005294CD /* Web App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Web App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD814E3616480A9D005294CD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		AD814E3916480A9D005294CD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -39,8 +41,6 @@
 		AD814E5516480BC3005294CD /* preferenceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = preferenceWindowController.h; sourceTree = "<group>"; };
 		AD814E5616480BC3005294CD /* preferenceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = preferenceWindowController.m; sourceTree = "<group>"; };
 		AD814E5716480BC3005294CD /* preferenceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = preferenceWindowController.xib; sourceTree = "<group>"; };
-		AD814E5E16480BF2005294CD /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = Model/Util.h; sourceTree = "<group>"; };
-		AD814E5F16480BF2005294CD /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Util.m; path = Model/Util.m; sourceTree = "<group>"; };
 		AD814E6716481804005294CD /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		AD814E691648182B005294CD /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,7 +100,8 @@
 		AD814E3C16480A9D005294CD /* Web App */ = {
 			isa = PBXGroup;
 			children = (
-				AD814E5D16480BD9005294CD /* Model */,
+				AD54111D16515FE4005852D4 /* Util.h */,
+				AD54111E16515FE4005852D4 /* Util.m */,
 				AD814E4816480A9D005294CD /* AppDelegate.h */,
 				AD814E4916480A9D005294CD /* AppDelegate.m */,
 				AD814E4B16480A9D005294CD /* MainMenu.xib */,
@@ -122,15 +123,6 @@
 				AD814E4516480A9D005294CD /* Credits.rtf */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		AD814E5D16480BD9005294CD /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				AD814E5E16480BF2005294CD /* Util.h */,
-				AD814E5F16480BF2005294CD /* Util.m */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,7 +195,7 @@
 				AD814E4316480A9D005294CD /* main.m in Sources */,
 				AD814E4A16480A9D005294CD /* AppDelegate.m in Sources */,
 				AD814E5816480BC3005294CD /* preferenceWindowController.m in Sources */,
-				AD814E6016480BF2005294CD /* Util.m in Sources */,
+				AD54111F16515FE4005852D4 /* Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +327,7 @@
 				AD814E5216480A9D005294CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

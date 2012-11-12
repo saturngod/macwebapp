@@ -3,14 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>App Name</key>
-	<string>Trello</string>
+	<string>Cloud9</string>
 	<key>URL</key>
-	<string>http://www.trello.com</string>
+	<string>http://localhost:3131</string>
 	<key>Show Preference</key>
 	<true/>
 	<key>Show TitleBar At Start</key>
 	<true/>
 	<key>Zoom At Start</key>
 	<true/>
+	<key>Show View Menu</key>
+	<false/>
 </dict>
 </plist>

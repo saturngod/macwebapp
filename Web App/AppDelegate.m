@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "preferenceWindowController.h"
-
+#import "Util.h"
 
 @interface AppDelegate()
 @property (nonatomic,strong) preferenceWindowController* pref;
@@ -27,6 +27,11 @@
  Disable the Title Bar on Windows
  */
 -(void)showTitleBarDisable;
+
+/**
+ App Config with Dictionary
+ */
+-(void)setConfig:(NSDictionary*)dict;
 @end
 
 @implementation AppDelegate
@@ -35,6 +40,7 @@
 @synthesize progress = _progress;
 @synthesize appmenu = _appmenu;
 @synthesize showTitleBarMenuItem = _showToolbarMenuItem;
+@synthesize viewMenuItem = _viewMenuItem;
 
 -(preferenceWindowController*)pref
 {
@@ -53,21 +59,9 @@
     [self.quitMenuItem setTitle:[NSString stringWithFormat:@"%@ %@",NSLocalizedString(@"Quit", @""),appname]];
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+-(void)setConfig:(NSDictionary*)dict
 {
-    
-    NSDictionary* dict = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"]];
-    
     [self setAppName:[dict objectForKey:@"App Name"]];
-    
-    if([dict objectForKey:@"Zoom At Start"])
-    {
-        //maximum
-        self.window.isZoomed = YES;
-    }
-    [self.window setBackgroundColor:[NSColor lightGrayColor]];
-    [self.webview setDrawsBackground:NO];
-    
     //show or not preference
     if((BOOL)[dict objectForKey:@"Show Preference"] == NO)
     {
@@ -84,6 +78,33 @@
         [self showTitleBarEnable];
     }
     
+    
+    if([dict objectForKey:@"Zoom At Start"])
+    {
+        //maximum
+        self.window.isZoomed = YES;
+    }
+    
+    if((BOOL)[dict objectForKey:@"Show View Menu"]==NO)
+    {
+        [self.mainMenu removeItem:self.viewMenuItem];
+    }
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+    
+    NSDictionary* dict = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"]];
+    
+   
+    
+
+    [self.window setBackgroundColor:[NSColor lightGrayColor]];
+    [self.webview setDrawsBackground:NO];
+    
+    
+    [self setConfig:dict];
+    
     NSString* URL = [dict objectForKey:@"URL"];
     
     //if already have other URL from perference
@@ -98,6 +119,13 @@
     
     [[self.webview mainFrame] loadRequest:request];
     [self.progress startAnimation:self];
+    
+    [self addNotification];
+}
+
+-(void)addNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ReloadPreferencePage:) name:@"ReloadPage" object:nil];
 }
 
 -(IBAction)showPreference:(id)sender {
@@ -131,8 +159,9 @@
         [alert setMessageText:[NSString stringWithFormat:@"%@ %@",NSLocalizedString(@"Couldn't not %@", @""),loadedURL]];
         [alert runModal];
         
-        [self.progress stopAnimation:self];
+        
     }
+    [self.progress stopAnimation:self];
 }
 
 -(IBAction)showTtitleBar:(NSMenuItem*)sender {
@@ -158,7 +187,23 @@
     [self.window setStyleMask:NSBorderlessWindowMask];
 }
 
+-(void)ReloadPreferencePage:(NSNotification*)noti
+{
 
+    if(![Util isEmpty:[[NSUserDefaults standardUserDefaults] objectForKey:@"URL"]])
+    {
+        NSString* URL = [[NSUserDefaults standardUserDefaults] objectForKey:@"URL"];
+        
+        NSURLRequest* request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:URL]];
+        
+        [self.webview setFrameLoadDelegate:self];
+        
+        [[self.webview mainFrame] loadRequest:request];
+        [self.progress startAnimation:self];
+    }
+    
+    
+}
 -(IBAction)ReloadPage:(id)sender
 {
     [self.progress startAnimation:self];

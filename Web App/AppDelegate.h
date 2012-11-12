@@ -14,10 +14,12 @@
 @property (assign) IBOutlet NSWindow *window;
 
 @property (assign) IBOutlet NSMenu *appmenu;
+@property (assign) IBOutlet NSMenu *mainMenu;
 @property (assign) IBOutlet NSMenuItem *preferenceMenuItem;
 @property (assign) IBOutlet NSMenuItem *aboutMenuItem;
 @property (assign) IBOutlet NSMenuItem *quitMenuItem;
 @property (assign) IBOutlet NSMenuItem *showTitleBarMenuItem;
+@property (assign) IBOutlet NSMenuItem *viewMenuItem;
 @property (assign) IBOutlet WebView *webview;
 @property (assign) IBOutlet NSProgressIndicator *progress;
 

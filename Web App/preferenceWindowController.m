@@ -7,6 +7,7 @@
 //
 
 #import "preferenceWindowController.h"
+#import "Util.h"
 
 @interface preferenceWindowController ()
 @property(nonatomic,strong) NSString* URL;
@@ -27,18 +28,26 @@
 
 - (BOOL)windowShouldClose:(id)sender {
    
-    if([Util isURL:self.urlAddress.stringValue])
-    {
+    if(![Util isEmpty:self.urlAddress.stringValue]) {
+        
+        
         [[NSUserDefaults standardUserDefaults] setObject:self.urlAddress.stringValue forKey:@"URL"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+
+        if(![self.URL isEqualToString:self.urlAddress.stringValue]) {
+            self.URL = self.urlAddress.stringValue;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadPage" object:nil];
+        }
+
         return YES;
     }
     else {
         NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:NSLocalizedString(@"URL is not valid", @"")];
+        [alert setMessageText:NSLocalizedString(@"URL can't be blank", @"")];
         [alert runModal];
+        return NO;
     }
-    return NO;
+
 }
 
 - (void)windowDidLoad
