@@ -10,5 +10,7 @@
 	<true/>
 	<key>Show TitleBar At Start</key>
 	<true/>
+	<key>Zoom At Start</key>
+	<true/>
 </dict>
 </plist>

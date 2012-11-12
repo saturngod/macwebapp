@@ -24,4 +24,7 @@
 
 -(IBAction)showPreference:(id)sender;
 -(IBAction)showTtitleBar:(id)sender;
+
+-(IBAction)ReloadPage:(id)sender;
+
 @end

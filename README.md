@@ -6,7 +6,7 @@ Web App Project is helping to create current website to run like App in Mac OSX.
 
 ##How to change the Website URL and app icons
 
-1. change the data in **data.plist**
+1. change the config in **data.plist**
 
 2. replace the **icon.icns** file
 

@@ -60,6 +60,11 @@
     
     [self setAppName:[dict objectForKey:@"App Name"]];
     
+    if([dict objectForKey:@"Zoom At Start"])
+    {
+        //maximum
+        self.window.isZoomed = YES;
+    }
     [self.window setBackgroundColor:[NSColor lightGrayColor]];
     [self.webview setDrawsBackground:NO];
     
@@ -154,4 +159,9 @@
 }
 
 
+-(IBAction)ReloadPage:(id)sender
+{
+    [self.progress startAnimation:self];
+    [[self.webview mainFrame] reload];
+}
 @end
